@@ -53,3 +53,38 @@ def test_int_sqrt(int_sqrt):
             printError(str(value[0]) + " devrait retourner " + str(value[1]))
         else:
             printSuccess(str(value[0]) + " valeur de retour " + str(value[1]))
+
+def my_init_square(a):
+    x = 0
+    while x*x <= a:
+        x = x + 1 
+    return x - 1
+
+def next_heron_sqrt(un, a):
+    return (un + (a/un))/2
+
+def test_heron_sqrt(heron_sqrt, a, n):
+    myVal = my_init_square(a)
+    # print("u0:" + str(myVal))
+    for i in range(1, n+1):
+        myVal = next_heron_sqrt(myVal, a)
+        # print("u"+ str(i) + ":" + str(myVal))
+
+    # print(str(myVal*myVal))
+    if myVal != heron_sqrt(a, n):
+        printError("heron_sqrt devrait retourner " + str(myVal) + ", valeur obtenue " + str(heron_sqrt(a, n)))
+    else:
+        printSuccess("")
+
+def test_heron_rank(heron_rank, a, p):
+    n = 0
+    myVal = my_init_square(a)
+    while abs((myVal*myVal) - a) > p:
+        myVal = next_heron_sqrt(myVal, a)
+        n = n + 1
+    rank = heron_rank(a, p)
+    if n != rank:
+        printError("heron_rank devrait retourner " + str(n) + ", valeur obtenue " + str(rank))
+    else:
+        printSuccess("")
+    
