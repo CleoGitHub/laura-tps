@@ -50,7 +50,7 @@ def test_int_sqrt(int_sqrt):
     values = [[8, 2], [7, 2], [17, 4], [25, 5], [90, 9]]
     for value in values :
         if int_sqrt(value[0]) != value[1]: 
-            printError(str(value[0]) + " devrait retourner " + str(value[1]))
+            printError(str(value[0]) + " devrait retourner " + str(value[1]) + " valeur obtenue: " + str(int_sqrt(value[0])))
         else:
             printSuccess(str(value[0]) + " valeur de retour " + str(value[1]))
 
